@@ -30,8 +30,8 @@ server:
     webvh_known_registry_url: ""
 
   branding:
-    app_name: "BCVH Sandbox"
-    app_description: "BC Gov community Sandbox WebVH server deployment."
+    app_name: "BCVH (Sandbox)"
+    app_description: "BC Gov WebVH server (Sandbox)."
     app_icon: "https://www2.gov.bc.ca/favicon.ico"
     app_logo: "https://www2.gov.bc.ca/images/BCID_H_rgb_pos.png"
     app_primary_color: "#234075"
