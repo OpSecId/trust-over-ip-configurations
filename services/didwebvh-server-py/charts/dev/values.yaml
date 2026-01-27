@@ -31,8 +31,9 @@ didwebvh-server-py:
     branding:
       app_name: "BCVH (Dev)"
       app_description: "BC Gov WebVH server (Development)."
-      app_icon: "https://www2.gov.bc.ca/favicon.ico"
-      app_logo: "https://www2.gov.bc.ca/images/BCID_H_rgb_pos.png"
+      icon: "https://www2.gov.bc.ca/favicon.ico"
+      logo_vertical : "https://www2.gov.bc.ca/images/BCID_H_rgb_pos.png"
+      logo_horizontal  : "https://www2.gov.bc.ca/images/BCID_H_rgb_pos.png"
       app_primary_color: "#234075"
       app_secondary_color: "#e3a82b"
       app_accent_color: "#82B1FF"
