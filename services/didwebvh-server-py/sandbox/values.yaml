@@ -32,12 +32,17 @@ server:
   branding:
     app_name: "BCVH Sandbox"
     app_description: "BC Gov community Sandbox WebVH server deployment."
-    app_icon: "https://www2.gov.bc.ca/favicon.ico"
-    app_logo: "https://www2.gov.bc.ca/images/BCID_H_rgb_pos.png"
+    # Chart expects icon, logo_vertical, logo_horizontal (not app_icon/app_logo)
+    icon: "https://www2.gov.bc.ca/favicon.ico"
+    logo_vertical: "https://www2.gov.bc.ca/images/BCID_H_rgb_pos.png"
+    logo_horizontal: "https://www2.gov.bc.ca/images/BCID_H_rgb_pos.png"
     app_primary_color: "#234075"
     app_secondary_color: "#e3a82b"
     app_accent_color: "#82B1FF"
-    
+
+  # Chart uses replicaCount (no HPA in DIF chart); set min replicas when autoscaling not used
+  replicaCount: 1
+
   autoscaling:
     enabled: true
     minReplicas: 1
@@ -58,14 +63,17 @@ server:
       enabled: true
       namespaceSelector:
         network.openshift.io/policy-group: ingress
-postgresql:
-  image:
-    registry: artifacts.developer.gov.bc.ca
-    repository: docker-remote/bitnamilegacy/postgresql
-    tag: 14.5.0-debian-11-r35
+
+# New chart (0.7.0) uses CloudPirates postgres subchart; see MIGRATION_PLAN.md for Bitnami → CloudPirates migration.
+postgres:
+  enabled: true
   commonLabels:
     backup: "false"
     env: sandbox
-  primary:
-    persistence:
-      size: 5Gi
+  persistence:
+    enabled: true
+    size: 5Gi
+  customUser:
+    name: "webvh-admin"
+    # Match app default so Postgres creates this DB (app expects "didwebvh-server" if POSTGRES_DB not set)
+    database: "didwebvh-server"
