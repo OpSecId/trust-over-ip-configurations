@@ -20,8 +20,7 @@ endorser-service:
 
   resources:
     limits:
-      cpu: 100m
-      memory: 512Mi
+      memory: 2Gi
     requests:
       cpu: 10m
       memory: 256Mi
@@ -91,9 +90,9 @@ endorser-service:
       emit-new-didcomm-prefix: true
       auto-ping-connection: true
       monitor-ping: true
-      log-level: WARNING
+      log-level: info
       plugin: []              # override default [webvh]; not needed for BCovrin
-      webhook-url: http://bcovrin-endorser:5000/webhooks#$(ACAPY_WEBHOOK_API_KEY)
+      # webhook-url: http://bcovrin-endorser:5000/webhooks#${ACAPY_WEBHOOK_API_KEY}
 
     # BCovrin Test genesis
     ledgers.yml:
@@ -125,7 +124,7 @@ endorser-service:
         secretKeys:
           seed: seed
 
-    extraEnvVarsSecret: "bcovrin-endorser-agent-webhook"
+    extraEnvVarsSecret: "bcovrin-endorser-acapy-webhook"
 
     # Public agent endpoint (used in argfile endpoint: and wss: entries)
     agentUrl: "https://bcovrin-endorser-agent-test.apps.silver.devops.gov.bc.ca"
