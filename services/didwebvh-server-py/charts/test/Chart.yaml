@@ -6,5 +6,5 @@ version: 0.4.5
 appVersion: "0.4.5"
 dependencies:
   - name: didwebvh-server-py
-    version: 0.4.5
-    repository: https://identity.foundation/didwebvh-server-py
+    version: 0.7.0
+    repository: https://decentralized-identity.github.io/helm-charts
