@@ -3,7 +3,7 @@ name: vc-authn-oidc
 description: vc-authn-oidc - prod
 type: application
 version: 1.0.0
-appVersion: "2.3.6"
+appVersion: "2.4.0"
 dependencies:
   - name: vc-authn-oidc
     version: 1.0.0
