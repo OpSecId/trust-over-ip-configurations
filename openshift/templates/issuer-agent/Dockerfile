@@ -1,4 +1,11 @@
-FROM ghcr.io/hyperledger/aries-cloudagent-python:py3.9-0.12.5
+FROM ghcr.io/openwallet-foundation/acapy-agent:py3.13-1.5.1
 
-# Install DRP plugin in agent image
-RUN pip install git+https://github.com/hyperledger/aries-acapy-plugins@0.12.2#subdirectory=rpc
+RUN pip install \
+  git+https://github.com/openwallet-foundation/acapy-plugins@1.5.1#subdirectory=rpc \
+  git+https://github.com/openwallet-foundation/acapy-plugins@1.5.1#subdirectory=connections
+
+# Workaround to resolve circular dependency with issue_credential and present_proof
+RUN pip install \
+  git+https://github.com/openwallet-foundation/acapy-plugins@1.5.1#subdirectory=issue_credential \
+  git+https://github.com/openwallet-foundation/acapy-plugins@1.5.1#subdirectory=present_proof \
+  --no-deps
