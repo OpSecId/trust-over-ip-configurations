@@ -95,7 +95,7 @@ jobs:
         run: |
           helm repo add traction https://bcgov.github.io/traction 
           helm upgrade --install \
-          -n ${{ secrets.OPENSHIFT_NAMESPACE_SANDBOX }} --wait --timeout=7m \
+          -n ${{ secrets.OPENSHIFT_NAMESPACE_SANDBOX }} --wait --timeout=10m \
           -f ./services/traction/sandbox/values.yaml \
           --set ui.ux.infoBanner.message="${BANNER_MESSAGE}" \
           traction-sandbox traction/traction
@@ -104,7 +104,7 @@ jobs:
         run: |
           helm repo add didwebvh-server-py ${{ vars.DIDWEBVH_HELM_REPO_URL }}
           helm upgrade --install \
-          -n ${{ secrets.OPENSHIFT_NAMESPACE_SANDBOX }} --wait --timeout=7m \
+          -n ${{ secrets.OPENSHIFT_NAMESPACE_SANDBOX }} --wait --timeout=10m \
           -f ./services/didwebvh-server-py/sandbox/values.yaml \
           --set ui.ux.infoBanner.message="${BANNER_MESSAGE}" \
           didwebvh-server-py-sandbox didwebvh-server-py/didwebvh-server-py
