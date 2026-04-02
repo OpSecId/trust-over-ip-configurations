@@ -10,7 +10,7 @@ endorser-service:
   # Endorser API
   # =============================================================================
 
-  replicaCount: 0
+  replicaCount: 1
 
   image:
     repository: ghcr.io/openwallet-foundation/acapy-endorser-service/endorser
@@ -56,15 +56,16 @@ endorser-service:
 
   acapy:
     enabled: true
-    replicaCount: 0
+    replicaCount: 1
     image:
       registry: ghcr.io
       repository: openwallet-foundation/acapy-endorser-service/agent
       tag: "1.1.2"
 
     argfile.yml:
-      auto-accept-invites: false
-      auto-accept-requests: false
+      auto-accept-invites: true
+      auto-accept-requests: true
+      debug-webhooks: true
       label: "Government of British Columbia - Sandbox Endorser"
       endorser-protocol-role: endorser
       requests-through-public-did: true
@@ -81,7 +82,7 @@ endorser-service:
       emit-new-didcomm-prefix: true
       auto-ping-connection: true
       monitor-ping: true
-      log-level: WARNING
+      log-level: info
       plugin: []
 
     ledgers.yml:
@@ -90,8 +91,8 @@ endorser-service:
         is_write: true
         genesis_url: "http://test.bcovrin.vonx.io/genesis"
 
-    plugin-config.yml:
-      did-webvh: null
+    plugin-config.yml: null
+      # did-webvh: null
 
     walletStorageConfig:
       max_connections: 5
