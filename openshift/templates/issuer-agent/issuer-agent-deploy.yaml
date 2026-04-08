@@ -392,6 +392,8 @@ objects:
                     secretKeyRef:
                       name: ${NAME}${SUFFIX}
                       key: webhook-url
+                - name: ACAPY_DEBUG_WEBHOOKS
+                  value: ${ACAPY_DEBUG_WEBHOOKS}
                 - name: HTTP_INTERFACE_PORT
                   value: ${AGENT_HTTP_PORT}
                 - name: ADMIN_INTERFACE_PORT
@@ -442,7 +444,7 @@ objects:
               imagePullPolicy: IfNotPresent
               resources:
                 limits:
-                  cpu: ${CPU_LIMIT}
+                  # cpu: ${CPU_LIMIT}
                   memory: ${MEMORY_LIMIT}
                 requests:
                   cpu: ${CPU_REQUEST}
@@ -581,6 +583,11 @@ parameters:
     description: The webhook endpoint
     required: true
     value: http://issuer-kit-controller:8080
+  - name: ACAPY_DEBUG_WEBHOOKS
+    displayName: Debug Webhooks
+    description: Flag specifying whether to use webhooks with full body payload or not.
+    required: true
+    value: 'true'
   - name: AGENT_ADMIN_PORT
     displayName: Agent Admin Port
     description: The admin port on which the service will listen.
