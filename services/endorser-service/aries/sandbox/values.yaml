@@ -63,8 +63,8 @@ endorser-service:
       tag: "1.1.2"
 
     argfile.yml:
-      auto-accept-invites: true
-      auto-accept-requests: true
+      auto-accept-invites: false
+      auto-accept-requests: false
       debug-webhooks: true
       label: "Government of British Columbia - Sandbox Endorser"
       endorser-protocol-role: endorser
@@ -83,7 +83,6 @@ endorser-service:
       auto-ping-connection: true
       monitor-ping: true
       log-level: info
-      log-level: info
       plugin: []
 
     ledgers.yml:
@@ -92,8 +91,6 @@ endorser-service:
         is_write: true
         genesis_url: "http://test.bcovrin.vonx.io/genesis"
 
-    plugin-config.yml: null
-      # did-webvh: null
     plugin-config.yml: null
       # did-webvh: null
 
